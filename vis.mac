@@ -31,7 +31,7 @@
 /vis/drawVolume
 #
 # Specify view angle:
-/vis/viewer/set/viewpointThetaPhi 0. 180.
+/vis/viewer/set/viewpointThetaPhi 90. 180.
 #
 # Specify zoom value:
 /vis/viewer/zoom 1.4
@@ -84,8 +84,8 @@
 # disable display to save time and memory
 #/vis/disable
 
-/B2/run/output_file test_surya
+/B2/run/output_file test_seed_8904143_1546573
 
-#/gun/momentumAmp 9 MeV
-# /gun/particle e-
-/run/beamOn 1000
+/gun/momentumAmp 9 MeV
+/gun/particle e-
+/run/beamOn 10

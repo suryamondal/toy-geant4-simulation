@@ -33,7 +33,7 @@
 #include "G4RunManagerFactory.hh"
 #include "G4SteppingVerbose.hh"
 #include "G4UImanager.hh"
-#include "FlashPhysicsList.hh"
+#include "PhysicsList.hh"
 #include "G4StepLimiterPhysics.hh"
 #include "G4ScoringManager.hh"
 
@@ -70,7 +70,7 @@ int main(int argc,char** argv)
   //
   runManager->SetUserInitialization(new B2::DetectorConstruction());
 
-  runManager->SetUserInitialization(new B2::FlashPhysicsList());
+  runManager->SetUserInitialization(new B2::PhysicsList());
   //G4VModularPhysicsList* physicsList = new G4VModularPhysicsList();
   // physicsList->RegisterPhysics(new G4StepLimiterPhysics());
   //runManager->SetUserInitialization(physicsList);
@@ -98,7 +98,7 @@ int main(int argc,char** argv)
   }
   else {
     // interactive mode
-    UImanager->ApplyCommand("/control/execute init_vis_EF.mac");
+    UImanager->ApplyCommand("/control/execute init_vis.mac");
     // if (ui->IsGUI()) {
     //   UImanager->ApplyCommand("/control/execute gui.mac");
     // }

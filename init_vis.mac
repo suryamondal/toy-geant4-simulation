@@ -8,10 +8,13 @@
 #
 # Change the default number of threads (in multi-threaded mode)
 /run/numberOfThreads 1
-
+#
 # Number of events displayed
 /vis/multithreading/maxEventQueueSize 100000
-
+#
+# Set Seed
+/random/setSeeds 8904139 1546570
+#
 #
 # Initialize kernel
 /run/initialize
