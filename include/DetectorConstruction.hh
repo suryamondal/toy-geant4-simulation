@@ -39,6 +39,7 @@ class G4LogicalVolume;
 class G4Material;
 class G4UserLimits;
 class G4GlobalMagFieldMessenger;
+class G4Region;
 
 #include "DetectorParameterDef.hh"
 
@@ -75,6 +76,8 @@ namespace B2
     void DefineMaterials();
     G4VPhysicalVolume* DefineVolumes();
 
+    G4Region *fRegion;
+
     // static data members
     static G4ThreadLocal G4GlobalMagFieldMessenger*  fMagFieldMessenger;
     // magnetic field messenger
@@ -97,6 +100,7 @@ namespace B2
 
     G4LogicalVolume* SliceLV;
     G4VPhysicalVolume* worldPV;
+    G4VPhysicalVolume* envelopePV;
   };
 
 }

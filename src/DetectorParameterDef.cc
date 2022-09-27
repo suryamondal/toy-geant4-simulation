@@ -7,10 +7,10 @@ namespace B2
 
   DetectorParameterDef::DetectorParameterDef() {
 
-    sliceDim[0] = 1*m;
-    sliceDim[1] = 1*m;
-    sliceDim[2] = 1*mm;
-    sliceN = 1000;
+    sliceDim[0] = 10*mm;
+    sliceDim[1] = 5*mm;
+    sliceDim[2] = 30*um;
+    sliceN = 1;
 
     UpdateDetectorParameterDef();
 
@@ -18,8 +18,8 @@ namespace B2
 
   void DetectorParameterDef::UpdateDetectorParameterDef() {
 
-    worldDim[0] = TMath::Max(sliceDim[0], sliceDim[1]) * 1.1;
-    worldDim[1] = worldDim[0];
+    worldDim[0] = sliceDim[0] * 1.1;
+    worldDim[1] = sliceDim[1] * 1.1;
     worldDim[2] = sliceDim[2] * sliceN * 1.1;
 
     Dfront = worldDim[2] * 0.5 * 0.1;

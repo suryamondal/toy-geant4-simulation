@@ -52,6 +52,7 @@
 #include "G4UserLimits.hh"
 
 #include "G4SystemOfUnits.hh"
+#include "G4ProductionCuts.hh"
 
 namespace B2
 {
@@ -65,6 +66,15 @@ namespace B2
     : worldPV(0)
   {
     fMessenger = new DetectorMessenger(this);
+
+    fRegion = new G4Region("Target");
+    G4ProductionCuts* cuts = new G4ProductionCuts();
+    G4double defCut = 1*um;
+    cuts->SetProductionCut(defCut,"gamma");
+    cuts->SetProductionCut(defCut,"e-");
+    cuts->SetProductionCut(defCut,"e+");
+    cuts->SetProductionCut(defCut,"proton");
+    fRegion->SetProductionCuts(cuts);
   }
 
   //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -164,6 +174,33 @@ namespace B2
 			  fCheckOverlaps); // checking overlaps
 
 
+    G4Box* envelopeS
+      = new G4Box("envelope",                                    //its name
+		  DetectorParameterDef::Instance().GetWorldDim(0) * 0.5,
+		  DetectorParameterDef::Instance().GetWorldDim(1) * 0.5,
+		  DetectorParameterDef::Instance().GetWorldDim(2) * 0.5);
+    // envelopeLength/2,envelopeLength/2,envelopeLength/2); //its size
+    G4LogicalVolume* envelopeLV
+      = new G4LogicalVolume(
+			    envelopeS,   //its solid
+			    Air,      //its material
+			    "Envelope"); //its name
+    fRegion->AddRootLogicalVolume(envelopeLV);
+
+    //  Must place the Envelope Physical volume unrotated at (0,0,0).
+    //
+    envelopePV
+      = new G4PVPlacement(
+			  0,               // no rotation
+			  G4ThreeVector(), // at (0,0,0)
+			  envelopeLV,         // its logical volume
+			  "EnvelopePV",         // its name
+			  worldLV,               // its mother  volume
+			  false,           // no boolean operations
+			  0,               // copy number
+			  fCheckOverlaps); // checking overlaps
+
+
 
     // Build and Place slices
 
@@ -190,7 +227,7 @@ namespace B2
 			position,
 			SliceLV,
 			"SlicePV",
-			worldLV,
+			envelopeLV,
 			false,
 			ij,
 			fCheckOverlaps);
