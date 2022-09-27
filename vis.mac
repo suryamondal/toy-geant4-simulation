@@ -86,13 +86,13 @@
 
 /B2/run/output_file test_seed_8904143_1546573
 
-/B2/det/setTargetMaterial G4_Fe
+/B2/det/setTargetMaterial G4_Si
 
 /B2/run/MomLowLimit 1.e-9
 /B2/run/MomUpLimit 1.e-5
 
-#/B2/run/pdgId 11
+#/B2/run/pdgId 11  # uncomment a few lines in PrimaryGeneratorAction for this
 /gun/particle gamma
 
 # /gun/momentumAmp 9 MeV
-/run/beamOn 10
+/run/beamOn 1000

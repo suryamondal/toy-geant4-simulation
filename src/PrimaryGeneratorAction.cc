@@ -105,22 +105,22 @@ namespace B2
 	(ObjManager::Instance().GetMomUpLimit() - ObjManager::Instance().GetMomLowLimit()) *
 	G4UniformRand();
 
-      fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0., 0., 1.));
-      fParticleGun->SetParticleEnergy(energy);
+      fParticleGun->SetParticleEnergy(energy*GeV);
       fParticleGun->SetParticlePosition(G4ThreeVector(posx, posy, posz));
+      fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0., 0., 1.));
+
+      fParticleGun->GeneratePrimaryVertex(anEvent);
 
       ObjManager::Instance().pdgin = fParticleGun->GetParticleDefinition()->GetPDGEncoding();
 
-      ObjManager::Instance().momin = (fParticleGun->GetParticleDefinition()->GetPDGCharge() *
-				      fParticleGun->GetParticleMomentum())/GeV;
+      ObjManager::Instance().momin = (fParticleGun->GetParticleEnergy()/GeV -
+				      fParticleGun->GetParticleDefinition()->GetPDGMass()/GeV);
       ObjManager::Instance().thein = fParticleGun->GetParticleMomentumDirection().theta();
       ObjManager::Instance().phiin = fParticleGun->GetParticleMomentumDirection().phi();
 
       ObjManager::Instance().vxin = fParticleGun->GetParticlePosition().x()/mm;
       ObjManager::Instance().vyin = fParticleGun->GetParticlePosition().y()/mm;
       ObjManager::Instance().vzin = fParticleGun->GetParticlePosition().z()/mm;
-
-      fParticleGun->GeneratePrimaryVertex(anEvent);
     }
   }
 
