@@ -69,12 +69,27 @@ namespace B2
     MomUpLimitCmd->SetParameterName("MomUpLimit",true, true);
     MomUpLimitCmd->SetDefaultValue(0.05);
 
+    PartIdCmd = new G4UIcmdWithAnInteger("/B2/run/pdgId",this);
+    PartIdCmd->SetGuidance("PDG encoding of particle");
+    PartIdCmd->SetParameterName("first_evt",true, true);
+    PartIdCmd->SetDefaultValue(1);
   }
 
   RunActionMessenger::~RunActionMessenger() {
     // delete runIDCmd;
     delete runDirectory;
     delete runDir;
+    delete InputDirCmd;
+    delete OutputDirCmd;
+    delete InputFileCmd;
+    delete OutputFileCmd;
+    delete CollatedFileCmd;
+
+    delete FirstEvtCmd;
+
+    delete PartIdCmd;
+    delete MomLowLimitCmd;
+    delete MomUpLimitCmd;
   }
 
   void RunActionMessenger::SetNewValue(G4UIcommand * command,G4String newValue) {
@@ -103,6 +118,9 @@ namespace B2
   
     if( command == FirstEvtCmd )
       { theRunAction->SetFirstEvt(FirstEvtCmd->GetNewIntValue(newValue));}  
+
+    if( command == PartIdCmd )
+      { theRunAction->SetPartId(PartIdCmd->GetNewIntValue(newValue));}
 
     if ( command == MomLowLimitCmd)
       {theRunAction->SetMomLowLimit(MomLowLimitCmd->GetNewDoubleValue(newValue));}

@@ -49,6 +49,9 @@ namespace B2
     /** Set Collated File Name */
     void SetCollatedRootFile(const G4String& p) {collated_title = p;}
 
+    void SetPDGEncoding(const int& p) {PDGEncoding=p;}
+    int GetPDGEncoding() const {return PDGEncoding;}
+
     void SetMomLowLimit(const G4double& p) {MomLowLim=p;}
     void SetMomUpLimit(const G4double& p) {MomUpLim=p;}
     G4double GetMomLowLimit() const {return MomLowLim;}
@@ -77,6 +80,7 @@ namespace B2
 
     G4double MomLowLim;
     G4double MomUpLim;
+    int PDGEncoding;
 
 
   public:

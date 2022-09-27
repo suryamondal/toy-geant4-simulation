@@ -67,6 +67,8 @@ namespace B2
   
     void SetFirstEvt(G4int p) { FirstEvt = p;}
 
+    void SetPartId(const int& p) {PDGEncoding=p;}
+
     void SetMomLowLimit(G4double p) {MomLowLim=p*GeV;}
     void SetMomUpLimit(G4double p) {MomUpLim=p*GeV;}
 
@@ -94,6 +96,7 @@ namespace B2
     G4int isVisOut;
     G4int isXtermOut;
 
+    int PDGEncoding;
     G4double MomLowLim;
     G4double MomUpLim;
   };

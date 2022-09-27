@@ -90,6 +90,7 @@ namespace B2
     ObjManager::Instance().SetCollatedRootFile(collated_title);
     ObjManager::Instance().OpenRootFiles();
 
+    ObjManager::Instance().SetPDGEncoding(PDGEncoding);
     ObjManager::Instance().SetMomLowLimit(MomLowLim);
     ObjManager::Instance().SetMomUpLimit(MomUpLim);
   }

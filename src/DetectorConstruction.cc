@@ -83,6 +83,7 @@ namespace B2
   {
     if(fStepLimit) delete fStepLimit;
     delete fMessenger;
+    delete fRegion;
 
     if(G10) delete G10;
   }

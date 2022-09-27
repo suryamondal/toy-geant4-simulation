@@ -91,6 +91,8 @@
 /B2/run/MomLowLimit 1.e-9
 /B2/run/MomUpLimit 1.e-5
 
-# /gun/momentumAmp 9 MeV
+#/B2/run/pdgId 11
 /gun/particle gamma
+
+# /gun/momentumAmp 9 MeV
 /run/beamOn 10

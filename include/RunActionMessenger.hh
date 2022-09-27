@@ -40,6 +40,7 @@ namespace B2
   
     G4UIcmdWithAnInteger*        FirstEvtCmd;
 
+    G4UIcmdWithAnInteger*        PartIdCmd;
     G4UIcmdWithADouble*          MomLowLimitCmd;
     G4UIcmdWithADouble*          MomUpLimitCmd;
   };

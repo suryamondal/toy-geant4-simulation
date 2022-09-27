@@ -55,12 +55,12 @@ namespace B2
 
     // default particle kinematic
 
-    G4ParticleDefinition* particleDefinition
-      = G4ParticleTable::GetParticleTable()->FindParticle("proton");
+    // G4ParticleDefinition* particleDefinition
+    //   = G4ParticleTable::GetParticleTable()->FindParticle("proton");
 
-    fParticleGun->SetParticleDefinition(particleDefinition);
-    fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0.,0.,1.));
-    fParticleGun->SetParticleEnergy(3.0*GeV);
+    // fParticleGun->SetParticleDefinition(particleDefinition);
+    // fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0.,0.,1.));
+    // fParticleGun->SetParticleEnergy(3.0*GeV);
   }
 
   //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -81,6 +81,11 @@ namespace B2
 
     int ngent = fParticleGun->GetNumberOfParticles();
     for (int ij=0; ij<ngent; ij++) {
+
+      // G4ParticleTable* particleTable = G4ParticleTable::GetParticleTable();
+      // G4ParticleDefinition* particle = particleTable->FindParticle(ObjManager::Instance().GetPDGEncoding());
+      // fParticleGun->SetParticleDefinition(particle);
+
       double posz = - DetectorParameterDef::Instance().GetWorldDim(2) * 0.5 +
 	DetectorParameterDef::Instance().GetFrontSpace();
       double posx = 0;
@@ -95,14 +100,14 @@ namespace B2
 
       // Setting momentum
 
-      G4double momentum =
+      G4double energy =
 	ObjManager::Instance().GetMomLowLimit() +
 	(ObjManager::Instance().GetMomUpLimit() - ObjManager::Instance().GetMomLowLimit()) *
 	G4UniformRand();
 
-      fParticleGun->SetParticlePosition(G4ThreeVector(posx, posy, posz));
-      fParticleGun->SetParticleMomentum(momentum);
       fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0., 0., 1.));
+      fParticleGun->SetParticleEnergy(energy);
+      fParticleGun->SetParticlePosition(G4ThreeVector(posx, posy, posz));
 
       ObjManager::Instance().pdgin = fParticleGun->GetParticleDefinition()->GetPDGEncoding();
 
