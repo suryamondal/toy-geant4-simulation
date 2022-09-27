@@ -69,7 +69,7 @@ namespace B2
 
     fRegion = new G4Region("Target");
     G4ProductionCuts* cuts = new G4ProductionCuts();
-    G4double defCut = 1*um;
+    G4double defCut = 1*nanometer;
     cuts->SetProductionCut(defCut,"gamma");
     cuts->SetProductionCut(defCut,"e-");
     cuts->SetProductionCut(defCut,"e+");
