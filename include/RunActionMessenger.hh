@@ -9,6 +9,7 @@
 class G4UIdirectory;
 class G4UIcmdWithAString;
 class G4UIcmdWithAnInteger;
+class G4UIcmdWithADouble;
 
 namespace B2
 {
@@ -38,6 +39,9 @@ namespace B2
     G4UIcmdWithAString*          CollatedFileCmd;
   
     G4UIcmdWithAnInteger*        FirstEvtCmd;
+
+    G4UIcmdWithADouble*          MomLowLimitCmd;
+    G4UIcmdWithADouble*          MomUpLimitCmd;
   };
 }
 

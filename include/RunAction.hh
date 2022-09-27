@@ -32,6 +32,7 @@
 
 #include "G4UserRunAction.hh"
 #include "globals.hh"
+#include "G4SystemOfUnits.hh"
 
 #include "ObjManager.hh"
 
@@ -66,6 +67,9 @@ namespace B2
   
     void SetFirstEvt(G4int p) { FirstEvt = p;}
 
+    void SetMomLowLimit(G4double p) {MomLowLim=p*GeV;}
+    void SetMomUpLimit(G4double p) {MomUpLim=p*GeV;}
+
   private:
 
     // ObjManager *objManager;
@@ -89,7 +93,9 @@ namespace B2
     G4int collatedIn;
     G4int isVisOut;
     G4int isXtermOut;
-    
+
+    G4double MomLowLim;
+    G4double MomUpLim;
   };
 
 }

@@ -8,6 +8,7 @@
 #include <sstream>
 #include "G4UIcmdWithAString.hh"
 #include "G4UIcmdWithAnInteger.hh"
+#include "G4UIcmdWithADouble.hh"
 
 namespace B2
 {
@@ -58,6 +59,16 @@ namespace B2
     FirstEvtCmd->SetParameterName("first_evt",true, true);
     FirstEvtCmd->SetDefaultValue(1);
 
+    MomLowLimitCmd = new G4UIcmdWithADouble("/B2/run/MomLowLimit",this);
+    MomLowLimitCmd->SetGuidance("Lower Limit of momentum in (GeV)");
+    MomLowLimitCmd->SetParameterName("MomLowLimit",true, true);
+    MomLowLimitCmd->SetDefaultValue(1.e-9);
+
+    MomUpLimitCmd = new G4UIcmdWithADouble("/B2/run/MomUpLimit",this);
+    MomUpLimitCmd->SetGuidance("Upper Limit of momentum in (GeV)");
+    MomUpLimitCmd->SetParameterName("MomUpLimit",true, true);
+    MomUpLimitCmd->SetDefaultValue(0.05);
+
   }
 
   RunActionMessenger::~RunActionMessenger() {
@@ -92,5 +103,10 @@ namespace B2
   
     if( command == FirstEvtCmd )
       { theRunAction->SetFirstEvt(FirstEvtCmd->GetNewIntValue(newValue));}  
-  }
+
+    if ( command == MomLowLimitCmd)
+      {theRunAction->SetMomLowLimit(MomLowLimitCmd->GetNewDoubleValue(newValue));}
+
+    if ( command == MomUpLimitCmd)
+      {theRunAction->SetMomUpLimit(MomUpLimitCmd->GetNewDoubleValue(newValue));}  }
 }
