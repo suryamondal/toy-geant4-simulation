@@ -114,6 +114,9 @@ namespace B2
     Air       = nistManager->FindOrBuildMaterial("G4_AIR");
     Silicon   = nistManager->FindOrBuildMaterial("G4_Si");
 
+    // default target material
+    TargetMaterial  = nistManager->FindOrBuildMaterial("G4_AIR");
+
     G10 = new G4Material("G10", density= 1.09*g/cm3, ncomponents=4);
     G10->AddElement(Si, natoms=1);
     G10->AddElement(O , natoms=2);
@@ -171,9 +174,9 @@ namespace B2
 		DetectorParameterDef::Instance().GetSliceDim(1) * 0.5,
 		DetectorParameterDef::Instance().GetSliceDim(2) * 0.5);
 
-    G4LogicalVolume* SliceLV =
+    SliceLV =
       new G4LogicalVolume(solidSliceBox,
-			  Aluminium,
+			  TargetMaterial,
 			  "SliceLV");
 
     for(int ij=0; ij< DetectorParameterDef::Instance().GetSliceN(); ij++) {
@@ -264,7 +267,25 @@ namespace B2
   //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
   void DetectorConstruction::SetTargetMaterial(G4String materialName)
-  {}
+  {
+    G4NistManager* nistManager = G4NistManager::Instance();
+
+    G4Material* pttoMaterial =
+      nistManager->FindOrBuildMaterial(materialName);
+
+    if (TargetMaterial != pttoMaterial) {
+      if ( pttoMaterial ) {
+        TargetMaterial = pttoMaterial;
+	if (SliceLV) SliceLV->SetMaterial(TargetMaterial);
+	G4cout<<" Target Material: "<<TargetMaterial->GetName()<<G4endl;
+      } else {
+        G4cout
+          << G4endl
+          << "-->  WARNING from SetTargetMaterial : "
+          << materialName << " not found" << G4endl;
+      }
+    }
+  }
 
   //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 

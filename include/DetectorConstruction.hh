@@ -87,12 +87,15 @@ namespace B2
     G4Material*        G10;
     G4Material*        Silicon;
 
+    G4Material*        TargetMaterial;
+
     G4UserLimits* fStepLimit = nullptr; // pointer to user step limits
 
     DetectorMessenger* fMessenger = nullptr; // messenger
 
     G4bool fCheckOverlaps = true; // option to activate checking of volumes overlaps
 
+    G4LogicalVolume* SliceLV;
     G4VPhysicalVolume* worldPV;
   };
 
