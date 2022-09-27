@@ -89,6 +89,9 @@ namespace B2
     ObjManager::Instance().SetOutputRootFile(output_title);
     ObjManager::Instance().SetCollatedRootFile(collated_title);
     ObjManager::Instance().OpenRootFiles();
+
+    ObjManager::Instance().SetMomLowLimit(MomLowLim);
+    ObjManager::Instance().SetMomUpLimit(MomUpLim);
   }
 
   //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

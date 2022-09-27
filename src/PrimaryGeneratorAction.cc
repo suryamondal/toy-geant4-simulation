@@ -93,7 +93,15 @@ namespace B2
       // 	posy = beamspot*2.*(0.5-G4UniformRand());
       // }
 
+      // Setting momentum
+
+      G4double momentum =
+	ObjManager::Instance().GetMomLowLimit() +
+	(ObjManager::Instance().GetMomUpLimit() - ObjManager::Instance().GetMomLowLimit()) *
+	G4UniformRand();
+
       fParticleGun->SetParticlePosition(G4ThreeVector(posx, posy, posz));
+      fParticleGun->SetParticleMomentum(momentum);
       fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0., 0., 1.));
 
       ObjManager::Instance().pdgin = fParticleGun->GetParticleDefinition()->GetPDGEncoding();
