@@ -42,7 +42,7 @@
 #/vis/viewer/set/lineSegmentsPerCircle 100
 #
 # Draw coordinate axes:
-/vis/scene/add/axes -1.25 0.25 0 0.25 m
+#/vis/scene/add/axes -1.25 0.25 0 0.25 m
 #
 # Draw smooth trajectories at end of event, showing trajectory points
 # as markers 2 pixels wide:
@@ -86,6 +86,11 @@
 
 /B2/run/output_file test_seed_8904143_1546573
 
-/gun/momentumAmp 9 MeV
+/B2/det/setTargetMaterial G4_Fe
+
+/B2/run/MomLowLimit 1.e-9
+/B2/run/MomUpLimit 1.e-3
+
+# /gun/momentumAmp 9 MeV
 /gun/particle e-
 /run/beamOn 10
