@@ -87,19 +87,19 @@ namespace B2
     otree->Branch("vyin",&vyin,"vyin/D");
     otree->Branch("vzin",&vzin,"vzin/D");
 
-    otree->Branch("npart",&npart,"npart/i");
-    otree->Branch("trkSDcopy",sdcopytrk,"trkSDcopy[npart]/I");
-    otree->Branch("trkpdg",pdgout,"trkpdg[npart]/I");
-    otree->Branch("trkid",trkid,"trkid[npart]/I");
-    otree->Branch("motherid",motherid,"motherid[npart]/I");
-    otree->Branch("creatorProcess",creatorProcess,"creatorProcess[npart]/C");
-    otree->Branch("trkedep",edep,"trkedep[npart]/D");
-    otree->Branch("trkmom",momout,"trkmom[npart]/D");
-    otree->Branch("trkthe",theout,"trkthe[npart]/D");
-    otree->Branch("trkphi",phiout,"trkphi[npart]/D");
-    otree->Branch("trkvx",vxout,"trkvx[npart]/D");
-    otree->Branch("trkvy",vyout,"trkvy[npart]/D");
-    otree->Branch("trkvz",vzout,"trkvz[npart]/D");
+    otree->Branch("nstep",&nstep,"nstep/i");
+    otree->Branch("trkSDcopy",sdcopytrk,"trkSDcopy[nstep]/I");
+    otree->Branch("trkpdg",pdgout,"trkpdg[nstep]/I");
+    otree->Branch("trkid",trkid,"trkid[nstep]/I");
+    otree->Branch("motherid",motherid,"motherid[nstep]/I");
+    otree->Branch("creatorProcess",creatorProcess,"creatorProcess[nstep]/C");
+    otree->Branch("trkedep",edep,"trkedep[nstep]/D");
+    otree->Branch("trkmom",momout,"trkmom[nstep]/D");
+    otree->Branch("trkthe",theout,"trkthe[nstep]/D");
+    otree->Branch("trkphi",phiout,"trkphi[nstep]/D");
+    otree->Branch("trkvx",vxout,"trkvx[nstep]/D");
+    otree->Branch("trkvy",vyout,"trkvy[nstep]/D");
+    otree->Branch("trkvz",vzout,"trkvz[nstep]/D");
   }
 
 }

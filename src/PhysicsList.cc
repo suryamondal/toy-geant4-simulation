@@ -84,9 +84,15 @@ namespace B2
 
     SetCutsWithDefault();
     G4Region *region;
-    G4String regName;
+    G4String regName = "Target";
     G4ProductionCuts *cuts;
-   
+
+    region = G4RegionStore::GetInstance()->GetRegion(regName);
+    // cuts = new G4ProductionCuts;
+    // cuts->SetProductionCut(1*nm); // same cuts for gamma, e- and e+
+    // // cuts->SetProductionCut(0.1*mm,G4ProductionCuts::GetIndex("gamma"));
+
+    // region->SetProductionCuts(cuts);
  
   }
 

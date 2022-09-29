@@ -1,6 +1,5 @@
 
 #include "DetectorParameterDef.hh"
-#include "TMath.h"
 
 namespace B2
 {
@@ -18,8 +17,8 @@ namespace B2
 
   void DetectorParameterDef::UpdateDetectorParameterDef() {
 
-    worldDim[0] = TMath::Max(sliceDim[0], sliceDim[1]) * 1.1;
-    worldDim[1] = worldDim[0];
+    worldDim[0] = sliceDim[0] * 1.1;
+    worldDim[1] = sliceDim[1] * 1.1;
     worldDim[2] = sliceDim[2] * sliceN * 1.1;
 
     Dfront = worldDim[2] * 0.5 * 0.1;

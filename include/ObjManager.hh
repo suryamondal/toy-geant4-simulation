@@ -43,11 +43,19 @@ namespace B2
     void CreateObjects();
 
     /** Set Input File Name */
-    void SetInputRootFile(G4String p) {input_title = p;}
+    void SetInputRootFile(const G4String& p) {input_title = p;}
     /** Set Output File Name */
-    void SetOutputRootFile(G4String p) {output_title = p;}
+    void SetOutputRootFile(const G4String& p) {output_title = p;}
     /** Set Collated File Name */
-    void SetCollatedRootFile(G4String p) {collated_title = p;}
+    void SetCollatedRootFile(const G4String& p) {collated_title = p;}
+
+    void SetPDGEncoding(const int& p) {PDGEncoding=p;}
+    int GetPDGEncoding() const {return PDGEncoding;}
+
+    void SetMomLowLimit(const G4double& p) {MomLowLim=p;}
+    void SetMomUpLimit(const G4double& p) {MomUpLim=p;}
+    G4double GetMomLowLimit() const {return MomLowLim;}
+    G4double GetMomUpLimit() const {return MomUpLim;}
 
     G4String Print() {return "I am here";};
 
@@ -69,6 +77,11 @@ namespace B2
     TFile *ofile;
 
     G4int isIntialized;
+
+    G4double MomLowLim;
+    G4double MomUpLim;
+    int PDGEncoding;
+
 
   public:
 
@@ -111,8 +124,8 @@ namespace B2
     UInt_t pdgin;
 
     /** Sim Info */
-    const UInt_t max_npart = 500;
-    UInt_t npart;
+    const UInt_t max_nstep = 500;
+    UInt_t nstep;
     Double_t edep[500],
       vxout[500],
       vyout[500],
