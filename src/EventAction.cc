@@ -55,7 +55,7 @@ namespace B2
   void EventAction::BeginOfEventAction(const G4Event* evt)
   {
     ObjManager::Instance().eventID = evt->GetEventID();
-    ObjManager::Instance().npart = 0;
+    ObjManager::Instance().nstep = 0;
   }
 
   //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

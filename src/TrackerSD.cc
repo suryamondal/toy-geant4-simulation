@@ -93,26 +93,26 @@ namespace B2
     G4ThreeVector parmom = aStep->GetPreStepPoint()->GetMomentum();
     G4ThreeVector glbpos = aStep->GetPreStepPoint()->GetPosition();
 
-    UInt_t npart = ObjManager::Instance().npart;
-    if(npart < ObjManager::Instance().max_npart) {
-      ObjManager::Instance().edep[npart] = edep;
+    UInt_t nstep = ObjManager::Instance().nstep;
+    if(nstep < ObjManager::Instance().max_nstep) {
+      ObjManager::Instance().edep[nstep] = edep;
 
-      ObjManager::Instance().sdcopytrk[npart] = copyNo;
+      ObjManager::Instance().sdcopytrk[nstep] = copyNo;
 
-      ObjManager::Instance().pdgout[npart] = pdgID;
-      ObjManager::Instance().trkid[npart] = trkID;
-      ObjManager::Instance().motherid[npart] = motherid;
-      strcpy(ObjManager::Instance().creatorProcess[npart], creatorProcess.Data());
+      ObjManager::Instance().pdgout[nstep] = pdgID;
+      ObjManager::Instance().trkid[nstep] = trkID;
+      ObjManager::Instance().motherid[nstep] = motherid;
+      strcpy(ObjManager::Instance().creatorProcess[nstep], creatorProcess.Data());
 
-      ObjManager::Instance().momout[npart] = parmom.mag()/GeV;
-      ObjManager::Instance().theout[npart] = parmom.theta();
-      ObjManager::Instance().phiout[npart] = parmom.phi();
+      ObjManager::Instance().momout[nstep] = parmom.mag()/GeV;
+      ObjManager::Instance().theout[nstep] = parmom.theta();
+      ObjManager::Instance().phiout[nstep] = parmom.phi();
 
-      ObjManager::Instance().vxout[npart] = glbpos.x()/mm;
-      ObjManager::Instance().vyout[npart] = glbpos.y()/mm;
-      ObjManager::Instance().vzout[npart] = glbpos.z()/mm;
+      ObjManager::Instance().vxout[nstep] = glbpos.x()/mm;
+      ObjManager::Instance().vyout[nstep] = glbpos.y()/mm;
+      ObjManager::Instance().vzout[nstep] = glbpos.z()/mm;
 
-      ObjManager::Instance().npart++;
+      ObjManager::Instance().nstep++;
     }
 
     TrackerHit* newHit = new TrackerHit();

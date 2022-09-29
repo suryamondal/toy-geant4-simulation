@@ -1,16 +1,15 @@
 
 #include "DetectorParameterDef.hh"
-#include "TMath.h"
 
 namespace B2
 {
 
   DetectorParameterDef::DetectorParameterDef() {
 
-    sliceDim[0] = 10*mm;
-    sliceDim[1] = 5*mm;
-    sliceDim[2] = 30*um;
-    sliceN = 1;
+    sliceDim[0] = 1*m;
+    sliceDim[1] = 1*m;
+    sliceDim[2] = 1*mm;
+    sliceN = 1000;
 
     UpdateDetectorParameterDef();
 

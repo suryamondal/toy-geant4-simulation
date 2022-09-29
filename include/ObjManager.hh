@@ -124,8 +124,8 @@ namespace B2
     UInt_t pdgin;
 
     /** Sim Info */
-    const UInt_t max_npart = 500;
-    UInt_t npart;
+    const UInt_t max_nstep = 500;
+    UInt_t nstep;
     Double_t edep[500],
       vxout[500],
       vyout[500],
