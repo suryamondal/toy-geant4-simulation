@@ -78,7 +78,7 @@ namespace B2
   {
     // energy deposit
     G4double edep = aStep->GetTotalEnergyDeposit()/GeV;
-    if(edep == 0.) return false;
+    // if(edep == 0.) return false;
 
     Int_t copyNo = aStep->GetTrack()->GetVolume()->GetCopyNo();
 
