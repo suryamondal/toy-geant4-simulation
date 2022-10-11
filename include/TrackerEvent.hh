@@ -78,7 +78,7 @@ private:
   // TVector3       fVertex;            //vertex coordinates
   // Int_t          fNjet;              //Number of jets
   // Int_t          fNtrack;            //Number of tracks
-  Int_t          fNhit;             //Number of hist in detector A
+  // Int_t          fNhit;             //Number of hist in detector A
   // TClonesArray  *fJets;              //->array with all jets
   // TClonesArray  *fTracks;            //->array with all tracks
   TClonesArray  *fHits;             //->array of hits in detector A
@@ -95,7 +95,7 @@ public:
   void          Reset(Option_t *option ="");
   // Int_t         GetNjet()   const { return fNjet; }
   // Int_t         GetNtrack() const { return fNtrack; }
-  Int_t         GetNhit()  const { return fNhit; }
+  // Int_t         GetNhit()  const { return fNhit; }
   TClonesArray *GetHits()  const { return fHits; }
   // Jet          *AddJet();
   // Track        *AddTrack();

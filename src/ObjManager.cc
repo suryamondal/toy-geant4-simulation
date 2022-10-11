@@ -1,5 +1,6 @@
 
 #include "ObjManager.hh"
+#include "TrackerEvent.h"
 
 namespace B2
 {
@@ -16,6 +17,7 @@ namespace B2
     itree = 0;
     ctree = 0;
     otree = 0;
+    event = 0;
 
     isIntialized = 0;
   }
@@ -29,7 +31,7 @@ namespace B2
     static ObjManager v;
     return v;
   }
-  
+
   void ObjManager::OpenRootFiles() {
     if(!isIntialized) {
 
@@ -87,19 +89,22 @@ namespace B2
     otree->Branch("vyin",&vyin,"vyin/D");
     otree->Branch("vzin",&vzin,"vzin/D");
 
-    otree->Branch("nstep",&nstep,"nstep/i");
-    otree->Branch("trkSDcopy",sdcopytrk,"trkSDcopy[nstep]/I");
-    otree->Branch("trkpdg",pdgout,"trkpdg[nstep]/I");
-    otree->Branch("trkid",trkid,"trkid[nstep]/I");
-    otree->Branch("motherid",motherid,"motherid[nstep]/I");
-    otree->Branch("creatorProcess",creatorProcess,"creatorProcess[nstep]/C");
-    otree->Branch("trkedep",edep,"trkedep[nstep]/D");
-    otree->Branch("trkmom",momout,"trkmom[nstep]/D");
-    otree->Branch("trkthe",theout,"trkthe[nstep]/D");
-    otree->Branch("trkphi",phiout,"trkphi[nstep]/D");
-    otree->Branch("trkvx",vxout,"trkvx[nstep]/D");
-    otree->Branch("trkvy",vyout,"trkvy[nstep]/D");
-    otree->Branch("trkvz",vzout,"trkvz[nstep]/D");
+    event = new TrackEvent;
+    otree->Branch("event","TrackEvent",&event,32000,99);
+
+    // otree->Branch("nstep",&nstep,"nstep/i");
+    // otree->Branch("trkSDcopy",sdcopytrk,"trkSDcopy[nstep]/I");
+    // otree->Branch("trkpdg",pdgout,"trkpdg[nstep]/I");
+    // otree->Branch("trkid",trkid,"trkid[nstep]/I");
+    // otree->Branch("motherid",motherid,"motherid[nstep]/I");
+    // otree->Branch("creatorProcess",creatorProcess,"creatorProcess[nstep]/C");
+    // otree->Branch("trkedep",edep,"trkedep[nstep]/D");
+    // otree->Branch("trkmom",momout,"trkmom[nstep]/D");
+    // otree->Branch("trkthe",theout,"trkthe[nstep]/D");
+    // otree->Branch("trkphi",phiout,"trkphi[nstep]/D");
+    // otree->Branch("trkvx",vxout,"trkvx[nstep]/D");
+    // otree->Branch("trkvy",vyout,"trkvy[nstep]/D");
+    // otree->Branch("trkvz",vzout,"trkvz[nstep]/D");
   }
 
 }

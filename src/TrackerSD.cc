@@ -93,27 +93,41 @@ namespace B2
     G4ThreeVector parmom = aStep->GetPreStepPoint()->GetMomentum();
     G4ThreeVector glbpos = aStep->GetPreStepPoint()->GetPosition();
 
-    UInt_t nstep = ObjManager::Instance().nstep;
-    if(nstep < ObjManager::Instance().max_nstep) {
-      ObjManager::Instance().edep[nstep] = edep;
+    Hit *hit = AddHit();
+    ObjManager::Instance().event->hit->edep = edep;
+    // ObjManager::Instance().event->hit->sdcopytrk = copyNo;
+    ObjManager::Instance().event->hit->pdg = pdgID;
+    ObjManager::Instance().event->hit->trkid = trkID;
+    ObjManager::Instance().event->hit->motherid = motherid;
+    strcpy(ObjManager::Instance().event->hit->creatorProcess, creatorProcess.Data());
+    ObjManager::Instance().event->hit->mom = parmom.mag()/GeV;
+    ObjManager::Instance().event->hit->the = parmom.theta();
+    ObjManager::Instance().event->hit->phi = parmom.phi();
+    ObjManager::Instance().event->hit->vx = glbpos.x()/mm;
+    ObjManager::Instance().event->hit->vy = glbpos.y()/mm;
+    ObjManager::Instance().event->hit->vz = glbpos.z()/mm;
 
-      ObjManager::Instance().sdcopytrk[nstep] = copyNo;
+    // UInt_t nstep = ObjManager::Instance().nstep;
+    // if(nstep < ObjManager::Instance().max_nstep) {
+    //   ObjManager::Instance().edep[nstep] = edep;
 
-      ObjManager::Instance().pdgout[nstep] = pdgID;
-      ObjManager::Instance().trkid[nstep] = trkID;
-      ObjManager::Instance().motherid[nstep] = motherid;
-      strcpy(ObjManager::Instance().creatorProcess[nstep], creatorProcess.Data());
+    //   ObjManager::Instance().sdcopytrk[nstep] = copyNo;
 
-      ObjManager::Instance().momout[nstep] = parmom.mag()/GeV;
-      ObjManager::Instance().theout[nstep] = parmom.theta();
-      ObjManager::Instance().phiout[nstep] = parmom.phi();
+    //   ObjManager::Instance().pdgout[nstep] = pdgID;
+    //   ObjManager::Instance().trkid[nstep] = trkID;
+    //   ObjManager::Instance().motherid[nstep] = motherid;
+    //   strcpy(ObjManager::Instance().creatorProcess[nstep], creatorProcess.Data());
 
-      ObjManager::Instance().vxout[nstep] = glbpos.x()/mm;
-      ObjManager::Instance().vyout[nstep] = glbpos.y()/mm;
-      ObjManager::Instance().vzout[nstep] = glbpos.z()/mm;
+    //   ObjManager::Instance().momout[nstep] = parmom.mag()/GeV;
+    //   ObjManager::Instance().theout[nstep] = parmom.theta();
+    //   ObjManager::Instance().phiout[nstep] = parmom.phi();
 
-      ObjManager::Instance().nstep++;
-    }
+    //   ObjManager::Instance().vxout[nstep] = glbpos.x()/mm;
+    //   ObjManager::Instance().vyout[nstep] = glbpos.y()/mm;
+    //   ObjManager::Instance().vzout[nstep] = glbpos.z()/mm;
+
+    //   ObjManager::Instance().nstep++;
+    // }
 
     TrackerHit* newHit = new TrackerHit();
 

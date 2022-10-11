@@ -123,20 +123,22 @@ namespace B2
       phiin;
     UInt_t pdgin;
 
-    /** Sim Info */
-    const UInt_t max_nstep = 500;
-    UInt_t nstep;
-    Double_t edep[500],
-      vxout[500],
-      vyout[500],
-      vzout[500],
-      momout[500],
-      theout[500],
-      phiout[500];
-    Int_t pdgout[500], sdcopytrk[500];
-    Int_t trkid[500];
-    Int_t motherid[500];
-    char creatorProcess[500][100];
+    TrackEvent *event;
+
+    // /** Sim Info */
+    // const UInt_t max_nstep = 500;
+    // UInt_t nstep;
+    // Double_t edep[500],
+    //   vxout[500],
+    //   vyout[500],
+    //   vzout[500],
+    //   momout[500],
+    //   theout[500],
+    //   phiout[500];
+    // Int_t pdgout[500], sdcopytrk[500];
+    // Int_t trkid[500];
+    // Int_t motherid[500];
+    // char creatorProcess[500][100];
   };
 }
 
