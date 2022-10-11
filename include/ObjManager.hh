@@ -22,10 +22,12 @@
 
 #include "globals.hh"
 
-#include "TrackerEvent.hh"
+// #include "TrackerEvent.hh"
 
 namespace B2
 {
+  class TrackerEvent;
+
   class ObjManager {
 
   public:

@@ -36,6 +36,7 @@
 #include "G4ios.hh"
 
 #include "ObjManager.hh"
+#include "TrackerEvent.hh"
 
 namespace B2
 {

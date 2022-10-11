@@ -1,5 +1,6 @@
 
 #include "ObjManager.hh"
+#include "TrackerEvent.hh"
 
 namespace B2
 {
