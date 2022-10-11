@@ -11,10 +11,9 @@
 #include "TRandom.h"
 #include "TrackerEvent.h"
 
-TClonesArray *TrackerEvent::fgJets   = 0;
-TClonesArray *TrackerEvent::fgTracks = 0;
-TClonesArray *TrackerEvent::fgHitsA  = 0;
-TClonesArray *TrackerEvent::fgHitsB  = 0;
+// TClonesArray *TrackerEvent::fgJets   = 0;
+// TClonesArray *TrackerEvent::fgTracks = 0;
+TClonesArray *TrackerEvent::fgHits  = 0;
 
 ////////////////////////////////////////////////////////////////////////////////
 /// Create a TrackerEvent object.
@@ -23,14 +22,13 @@ TClonesArray *TrackerEvent::fgHitsB  = 0;
 
 TrackerEvent::TrackerEvent()
 {
-  if (!fgTracks) fgTracks = new TClonesArray("Track", 100);
-  if (!fgJets)   fgJets   = new TClonesArray("Jet", 10);
-  if (!fgHitsA)  fgHitsA  = new TClonesArray("Hit", 10000);
-  if (!fgHitsB)  fgHitsB  = new TClonesArray("Hit", 1000);
-  fJets   = fgJets;
-  fTracks = fgTracks;
-  fHitsA  = fgHitsA;
-  fHitsB  = fgHitsB;
+  // if (!fgTracks) fgTracks = new TClonesArray("Track", 100);
+  // if (!fgJets)   fgJets   = new TClonesArray("Jet", 10);
+  if (!fgHits)  fgHits  = new TClonesArray("Hit", 10000);
+  // fJets   = fgJets;
+  // fTracks = fgTracks;
+  fHits  = fgHits;
+  // fHitsB  = fgHitsB;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -99,42 +97,32 @@ void TrackerEvent::Build(Int_t jetm, Int_t trackm, Int_t hitam, Int_t hitbm) {
 ////////////////////////////////////////////////////////////////////////////////
 /// Add a new Jet to the list of tracks for this event.
 
-Jet *TrackerEvent::AddJet()
-{
-  TClonesArray &jets = *fJets;
-  Jet *jet = new(jets[fNjet++]) Jet();
-  return jet;
-}
+// Jet *TrackerEvent::AddJet()
+// {
+//   TClonesArray &jets = *fJets;
+//   Jet *jet = new(jets[fNjet++]) Jet();
+//   return jet;
+// }
 
 
 ////////////////////////////////////////////////////////////////////////////////
 /// Add a new track to the list of tracks for this event.
 
-Track *TrackerEvent::AddTrack()
-{
-  TClonesArray &tracks = *fTracks;
-  Track *track = new(tracks[fNtrack++]) Track();
-  return track;
-}
+// Track *TrackerEvent::AddTrack()
+// {
+//   TClonesArray &tracks = *fTracks;
+//   Track *track = new(tracks[fNtrack++]) Track();
+//   return track;
+// }
 
 
 ////////////////////////////////////////////////////////////////////////////////
 /// Add a new hit to the list of hits in detector A
 
-Hit *TrackerEvent::AddHitA()
+Hit *TrackerEvent::AddHit()
 {
-  TClonesArray &hitsA = *fHitsA;
-  Hit *hit = new(hitsA[fNhitA++]) Hit();
-  return hit;
-}
-
-////////////////////////////////////////////////////////////////////////////////
-/// Add a new hit to the list of hits in detector B
-
-Hit *TrackerEvent::AddHitB()
-{
-  TClonesArray &hitsB = *fHitsB;
-  Hit *hit = new(hitsB[fNhitB++]) Hit();
+  TClonesArray &hits = *fHits;
+  Hit *hit = new(hits[fNhit++]) Hit();
   return hit;
 }
 
@@ -142,10 +130,9 @@ Hit *TrackerEvent::AddHitB()
 
 void TrackerEvent::Clear(Option_t *option)
 {
-  fJets->Clear(option);
-  fTracks->Clear(option);
-  fHitsA->Clear(option);
-  fHitsB->Clear(option);
+  // fJets->Clear(option);
+  // fTracks->Clear(option);
+  fHits->Clear(option);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -153,9 +140,8 @@ void TrackerEvent::Clear(Option_t *option)
 
 void TrackerEvent::Reset(Option_t *)
 {
-  delete fgJets;   fgJets = 0;
-  delete fgTracks; fgTracks = 0;
-  delete fgHitsA;  fgHitsA = 0;
-  delete fgHitsB;  fgHitsB = 0;
+  // delete fgJets;   fgJets = 0;
+  // delete fgTracks; fgTracks = 0;
+  delete fgHits;  fgHits = 0;
 }
 
