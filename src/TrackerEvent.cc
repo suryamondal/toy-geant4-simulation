@@ -9,7 +9,7 @@
  
 #include "TMath.h"
 #include "TRandom.h"
-#include "TrackerEvent.h"
+#include "TrackerEvent.hh"
 
 // TClonesArray *TrackerEvent::fgJets   = 0;
 // TClonesArray *TrackerEvent::fgTracks = 0;
@@ -133,6 +133,11 @@ void TrackerEvent::Clear(Option_t *option)
   // fJets->Clear(option);
   // fTracks->Clear(option);
   fHits->Clear(option);
+}
+
+void TrackerEvent::ClearAll()
+{
+  fHits->Delete();
 }
 
 ////////////////////////////////////////////////////////////////////////////////

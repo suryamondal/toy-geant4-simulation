@@ -22,6 +22,8 @@
 
 #include "globals.hh"
 
+#include "TrackerEvent.hh"
+
 namespace B2
 {
   class ObjManager {
@@ -123,7 +125,7 @@ namespace B2
       phiin;
     UInt_t pdgin;
 
-    TrackEvent *event;
+    TrackerEvent *event;
 
     // /** Sim Info */
     // const UInt_t max_nstep = 500;

@@ -1,6 +1,5 @@
 
 #include "ObjManager.hh"
-#include "TrackerEvent.h"
 
 namespace B2
 {
@@ -89,7 +88,7 @@ namespace B2
     otree->Branch("vyin",&vyin,"vyin/D");
     otree->Branch("vzin",&vzin,"vzin/D");
 
-    event = new TrackEvent;
+    event = new TrackerEvent;
     otree->Branch("event","TrackEvent",&event,32000,99);
 
     // otree->Branch("nstep",&nstep,"nstep/i");

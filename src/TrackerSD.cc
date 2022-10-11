@@ -93,19 +93,20 @@ namespace B2
     G4ThreeVector parmom = aStep->GetPreStepPoint()->GetMomentum();
     G4ThreeVector glbpos = aStep->GetPreStepPoint()->GetPosition();
 
-    Hit *hit = AddHit();
-    ObjManager::Instance().event->hit->edep = edep;
-    // ObjManager::Instance().event->hit->sdcopytrk = copyNo;
-    ObjManager::Instance().event->hit->pdg = pdgID;
-    ObjManager::Instance().event->hit->trkid = trkID;
-    ObjManager::Instance().event->hit->motherid = motherid;
-    strcpy(ObjManager::Instance().event->hit->creatorProcess, creatorProcess.Data());
-    ObjManager::Instance().event->hit->mom = parmom.mag()/GeV;
-    ObjManager::Instance().event->hit->the = parmom.theta();
-    ObjManager::Instance().event->hit->phi = parmom.phi();
-    ObjManager::Instance().event->hit->vx = glbpos.x()/mm;
-    ObjManager::Instance().event->hit->vy = glbpos.y()/mm;
-    ObjManager::Instance().event->hit->vz = glbpos.z()/mm;
+    Hit* hit = ObjManager::Instance().event->AddHit();
+
+    hit->edep = edep;
+    // hit->sdcopytrk = copyNo;
+    hit->pdg = pdgID;
+    hit->trkid = trkID;
+    hit->motherid = motherid;
+    strcpy(hit->creatorProcess, creatorProcess.Data());
+    hit->mom = parmom.mag()/GeV;
+    hit->the = parmom.theta();
+    hit->phi = parmom.phi();
+    hit->vx = glbpos.x()/mm;
+    hit->vy = glbpos.y()/mm;
+    hit->vz = glbpos.z()/mm;
 
     // UInt_t nstep = ObjManager::Instance().nstep;
     // if(nstep < ObjManager::Instance().max_nstep) {

@@ -31,7 +31,8 @@ public:
     edep = 0;
     vx = 0; vy = 0; vz = 0;
     mom = 0; the = 0; phi = 0;
-    pdg = 0; trkid = 0; motherid = 0; creatorProcess = "";
+    pdg = 0; trkid = 0; motherid = 0;
+    sprintf(creatorProcess,"%s","");
   }
   virtual ~Hit() { }
 
@@ -78,7 +79,7 @@ private:
   // TVector3       fVertex;            //vertex coordinates
   // Int_t          fNjet;              //Number of jets
   // Int_t          fNtrack;            //Number of tracks
-  // Int_t          fNhit;             //Number of hist in detector A
+  Int_t          fNhit;             //Number of hist in detector A
   // TClonesArray  *fJets;              //->array with all jets
   // TClonesArray  *fTracks;            //->array with all tracks
   TClonesArray  *fHits;             //->array of hits in detector A
@@ -92,10 +93,11 @@ public:
   virtual ~TrackerEvent();
   // void          Build(Int_t jetm=3, Int_t trackm=10, Int_t hitam=100, Int_t hitbm=10);
   void          Clear(Option_t *option ="");
+  void          ClearAll();
   void          Reset(Option_t *option ="");
   // Int_t         GetNjet()   const { return fNjet; }
   // Int_t         GetNtrack() const { return fNtrack; }
-  // Int_t         GetNhit()  const { return fNhit; }
+  Int_t         GetNhit()  const { return fNhit; }
   TClonesArray *GetHits()  const { return fHits; }
   // Jet          *AddJet();
   // Track        *AddTrack();
