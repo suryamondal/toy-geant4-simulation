@@ -47,6 +47,9 @@ namespace B2
 
     void  BeginOfEventAction(const G4Event* ) override;
     void    EndOfEventAction(const G4Event* ) override;
+
+  private:
+    Int_t ObjectNumber;
   };
 
 }

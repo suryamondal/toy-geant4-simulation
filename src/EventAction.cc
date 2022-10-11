@@ -47,7 +47,7 @@ namespace B2
   {}
 
   //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
+  
   EventAction::~EventAction()
   {}
 
@@ -57,6 +57,7 @@ namespace B2
   {
     ObjManager::Instance().eventID = evt->GetEventID();
     ObjManager::Instance().event->ClearAll();
+    ObjectNumber = TProcessID::GetObjectCount();
   }
 
   //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -82,6 +83,12 @@ namespace B2
     //   G4cout << "    "
     //          << hc->GetSize() << " hits stored in this event" << G4endl;
     // }
+
+    //Restore Object count
+    //To save space in the table keeping track of all referenced objects
+    //we assume that our events do not address each other. We reset the
+    //object count to what it was at the beginning of the event.
+    TProcessID::SetObjectCount(ObjectNumber);
 
     ObjManager::Instance().otree->Fill();
   }
