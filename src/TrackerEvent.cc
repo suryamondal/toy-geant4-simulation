@@ -11,6 +11,9 @@
 #include "TRandom.h"
 #include "TrackerEvent.hh"
 
+namespace B2
+{
+
 // TClonesArray *TrackerEvent::fgJets   = 0;
 // TClonesArray *TrackerEvent::fgTracks = 0;
 TClonesArray *TrackerEvent::fgHits  = 0;
@@ -150,3 +153,4 @@ void TrackerEvent::Reset(Option_t *)
   delete fgHits;  fgHits = 0;
 }
 
+}

@@ -13,6 +13,9 @@
 #include "TRefArray.h"
 #include "TVector3.h"
 
+namespace B2
+{
+
 class Hit : public TObject {
 
 public:
@@ -107,6 +110,7 @@ public:
   // ClassDef(TrackerEvent,1)  //Event structure
 };
 
+}
 #endif
 
  
