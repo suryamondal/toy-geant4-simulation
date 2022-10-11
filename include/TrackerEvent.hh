@@ -16,12 +16,23 @@
 class Hit : public TObject {
 
 public:
-  Double_t     fX;           //X of hit
-  Double_t     fY;           //Y of hit
-  Double_t     fZ;           //Z of hit
+
+  Int_t layerid, nX, nY;
+  Double_t edep,
+    vx, vy,
+    vz, mom,
+    the, phi;
+  Int_t pdg, trkid, motherid;
+  char creatorProcess[100];
 
 public:
-  Hit() { }
+  Hit() {
+    layerid = 0; nX = 0; nY = 0;
+    edep = 0;
+    vx = 0; vy = 0; vz = 0;
+    mom = 0; the = 0; phi = 0;
+    pdg = 0; trkid = 0; motherid = 0; creatorProcess = "";
+  }
   virtual ~Hit() { }
 
   // ClassDef(Hit,1)  //A track hit
