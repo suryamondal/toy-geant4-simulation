@@ -36,6 +36,15 @@ add_compile_options(-Wall -Wextra -pedantic)
 # #
 # add_subdirectory(Manager)
 
+# #----------------------------------------------------------------------------
+# # rootcint problems
+# #
+execute_process(
+  COMMAND bash -c "cd src && rm DigiStoredict.cxx \
+                             rm DigiStoredict_rdict.pcm \
+                             rootcint DigiStoredict.cxx -c DigiStore.h"
+  )
+
 #----------------------------------------------------------------------------
 # Locate sources and headers for this project
 # NB: headers are included so they will show up in IDEs

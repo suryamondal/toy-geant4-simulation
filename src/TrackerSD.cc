@@ -94,7 +94,7 @@ namespace B2
     G4ThreeVector parmom = aStep->GetPreStepPoint()->GetMomentum();
     G4ThreeVector glbpos = aStep->GetPreStepPoint()->GetPosition();
 
-    Hits *hits = ObjManager::Instance().events->AddHit();
+    EventHit *hits = ObjManager::Instance().events->AddHit();
 
     hits->edep = edep;
     hits->layerid = copyNo;

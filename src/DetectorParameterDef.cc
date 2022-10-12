@@ -6,10 +6,10 @@ namespace B2
 
   DetectorParameterDef::DetectorParameterDef() {
 
-    sliceDim[0] = 1*m;
-    sliceDim[1] = 1*m;
+    sliceDim[0] = 10*cm;
+    sliceDim[1] = 10*cm;
     sliceDim[2] = 1*mm;
-    sliceN = 1000;
+    sliceN = 100;
 
     UpdateDetectorParameterDef();
 

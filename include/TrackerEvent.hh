@@ -17,34 +17,36 @@
 #include "TMath.h"
 #include "TTimeStamp.h"
 
+#include "EventHit.hh"
+
 namespace B2
 {
 
-  class Hits : public TObject {
+  // class Hits : public TObject {
 
-  public:
+  // public:
 
-    Int_t layerid, nX, nY;
-    Double_t edep,
-      vx, vy,
-      vz, mom,
-      the, phi;
-    Int_t pdg, trkid, motherid;
-    char creatorProcess[100];
+  //   Int_t layerid, nX, nY;
+  //   Double_t edep,
+  //     vx, vy,
+  //     vz, mom,
+  //     the, phi;
+  //   Int_t pdg, trkid, motherid;
+  //   char creatorProcess[100];
 
-  public:
-    Hits() {
-      layerid = 0; nX = 0; nY = 0;
-      edep = 0;
-      vx = 0; vy = 0; vz = 0;
-      mom = 0; the = 0; phi = 0;
-      pdg = 0; trkid = 0; motherid = 0;
-      sprintf(creatorProcess,"%s","");
-    }
-    virtual ~Hits() { }
+  // public:
+  //   Hits() {
+  //     layerid = 0; nX = 0; nY = 0;
+  //     edep = 0;
+  //     vx = 0; vy = 0; vz = 0;
+  //     mom = 0; the = 0; phi = 0;
+  //     pdg = 0; trkid = 0; motherid = 0;
+  //     sprintf(creatorProcess,"%s","");
+  //   }
+  //   virtual ~Hits() { }
 
-    // ClassDef(Hits,1)  //A track hit
-  };
+  //   ClassDef(Hits,1)  //A track hit
+  // };
 
   // class Track : public TObject {
 
@@ -108,10 +110,10 @@ namespace B2
     TClonesArray *GetHits()  const { return fHits; }
     // Jet          *AddJet();
     // Track        *AddTrack();
-    Hits          *AddHit();
+    EventHit          *AddHit();
     // TClonesArray *GetJets() const { return fJets; }
 
-    // ClassDef(TrackerEvent,1)  //Event structure
+    ClassDef(TrackerEvent,1)  //Event structure
   };
 
 }

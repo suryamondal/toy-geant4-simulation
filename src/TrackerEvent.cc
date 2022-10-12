@@ -12,7 +12,7 @@
 #include "TrackerEvent.hh"
 // #include "TGenericClassInfo.hh"
 
-// ClassImp(B2::Hits);
+// ClassImp(B2::EventHit);
 
 // using namespace std;
 // using namespace ROOT;
@@ -20,7 +20,7 @@
 namespace B2
 {
 
-  // ClassImp(Hits);
+  ClassImp(EventHit);
 
   // TClonesArray *TrackerEvent::fgJets   = 0;
   // TClonesArray *TrackerEvent::fgTracks = 0;
@@ -130,10 +130,10 @@ namespace B2
   ////////////////////////////////////////////////////////////////////////////////
   /// Add a new hit to the list of hits in detector A
 
-  Hits *TrackerEvent::AddHit()
+  EventHit *TrackerEvent::AddHit()
   {
     TClonesArray &hits = *fHits;
-    Hits *hit = new(hits[fNhit++]) Hits();
+    EventHit *hit = new(hits[fNhit++]) EventHit();
     return hit;
   }
 
