@@ -94,20 +94,20 @@ namespace B2
     G4ThreeVector parmom = aStep->GetPreStepPoint()->GetMomentum();
     G4ThreeVector glbpos = aStep->GetPreStepPoint()->GetPosition();
 
-    Hits *hit = ObjManager::Instance().event->AddHit();
+    Hits *hits = ObjManager::Instance().events->AddHit();
 
-    hit->edep = edep;
-    hit->layerid = copyNo;
-    hit->pdg = pdgID;
-    hit->trkid = trkID;
-    hit->motherid = motherid;
-    strcpy(hit->creatorProcess, creatorProcess.Data());
-    hit->mom = parmom.mag()/GeV;
-    hit->the = parmom.theta();
-    hit->phi = parmom.phi();
-    hit->vx = glbpos.x()/mm;
-    hit->vy = glbpos.y()/mm;
-    hit->vz = glbpos.z()/mm;
+    hits->edep = edep;
+    hits->layerid = copyNo;
+    hits->pdg = pdgID;
+    hits->trkid = trkID;
+    hits->motherid = motherid;
+    strcpy(hits->creatorProcess, creatorProcess.Data());
+    hits->mom = parmom.mag()/GeV;
+    hits->the = parmom.theta();
+    hits->phi = parmom.phi();
+    hits->vx = glbpos.x()/mm;
+    hits->vy = glbpos.y()/mm;
+    hits->vz = glbpos.z()/mm;
 
     TrackerHit* newHit = new TrackerHit();
 

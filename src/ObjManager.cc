@@ -17,7 +17,7 @@ namespace B2
     itree = 0;
     ctree = 0;
     otree = 0;
-    event = 0;
+    events = 0;
 
     isIntialized = 0;
   }
@@ -89,8 +89,8 @@ namespace B2
     otree->Branch("vyin",&vyin,"vyin/D");
     otree->Branch("vzin",&vzin,"vzin/D");
 
-    event = new TrackerEvent;
-    otree->Branch("event","TrackEvent",&event,32000,99);
+    events = new TrackerEvent;
+    otree->Branch("events","TrackerEvent",&events,32000,99);
 
     // otree->Branch("nstep",&nstep,"nstep/i");
     // otree->Branch("trkSDcopy",sdcopytrk,"trkSDcopy[nstep]/I");

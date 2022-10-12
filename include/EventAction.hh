@@ -49,7 +49,7 @@ namespace B2
     void    EndOfEventAction(const G4Event* ) override;
 
   private:
-    Int_t ObjectNumber;
+    int ObjectNumber;
   };
 
 }

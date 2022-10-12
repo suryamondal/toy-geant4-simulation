@@ -47,7 +47,7 @@ namespace B2
   {}
 
   //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-  
+
   EventAction::~EventAction()
   {}
 
@@ -56,7 +56,7 @@ namespace B2
   void EventAction::BeginOfEventAction(const G4Event* evt)
   {
     ObjManager::Instance().eventID = evt->GetEventID();
-    ObjManager::Instance().event->ClearAll();
+    ObjManager::Instance().events->Clear("C");
     ObjectNumber = TProcessID::GetObjectCount();
   }
 

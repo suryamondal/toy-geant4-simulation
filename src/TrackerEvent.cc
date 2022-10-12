@@ -6,13 +6,21 @@
 // also stored in a TRefArray.
 // see $ROOTSYS/tutorials/jets.C for an example creating a Tree
 // with TrackerEvents.
- 
+
 #include "TMath.h"
 #include "TRandom.h"
 #include "TrackerEvent.hh"
+// #include "TGenericClassInfo.hh"
+
+// ClassImp(B2::Hits);
+
+// using namespace std;
+// using namespace ROOT;
 
 namespace B2
 {
+
+  // ClassImp(Hits);
 
   // TClonesArray *TrackerEvent::fgJets   = 0;
   // TClonesArray *TrackerEvent::fgTracks = 0;
@@ -31,7 +39,7 @@ namespace B2
     // fJets   = fgJets;
     // fTracks = fgTracks;
     fHits  = fgHits;
-    // fHitsB  = fgHitsB;
+    fNhit = 0;
   }
 
   ////////////////////////////////////////////////////////////////////////////////
@@ -135,12 +143,14 @@ namespace B2
   {
     // fJets->Clear(option);
     // fTracks->Clear(option);
+    fNhit = 0;
     fHits->Clear(option);
   }
 
   void TrackerEvent::ClearAll()
   {
-    fHits->Delete();
+    fNhit = 0;
+    if(fHits) fHits->Delete();
   }
 
   ////////////////////////////////////////////////////////////////////////////////
@@ -150,7 +160,9 @@ namespace B2
   {
     // delete fgJets;   fgJets = 0;
     // delete fgTracks; fgTracks = 0;
-    delete fgHits;  fgHits = 0;
+    fNhit = 0;
+    if(fgHits) delete fgHits;
+    fgHits = 0;
   }
 
 }

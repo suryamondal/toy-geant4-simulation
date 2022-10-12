@@ -8,10 +8,14 @@
 // Description of the event and track parameters                        //
 //                                                                      //
 //////////////////////////////////////////////////////////////////////////
- 
+
+#include "TObject.h"
 #include "TClonesArray.h"
 #include "TRefArray.h"
-#include "TVector3.h"
+#include "TRef.h"
+#include "TBits.h"
+#include "TMath.h"
+#include "TTimeStamp.h"
 
 namespace B2
 {
@@ -50,7 +54,7 @@ namespace B2
   //   Double_t     fPz;           //Z component of the momentum
   //   Int_t        fNhit;         //Number of hits for this track
   //   TRefArray    fHits;         //List of Hits for this track
- 
+
   // public:
   //   Track() { }
   //   virtual ~Track() { }
@@ -112,5 +116,3 @@ namespace B2
 
 }
 #endif
-
- 

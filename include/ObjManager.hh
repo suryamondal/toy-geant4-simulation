@@ -127,7 +127,7 @@ namespace B2
       phiin;
     UInt_t pdgin;
 
-    TrackerEvent *event;
+    TrackerEvent *events;
 
     // /** Sim Info */
     // const UInt_t max_nstep = 500;
